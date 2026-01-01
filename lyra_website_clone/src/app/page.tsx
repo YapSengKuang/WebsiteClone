@@ -1,21 +1,14 @@
-import Link from "next/link";
-import { LatestPost } from "sk/app/_components/post";
-import { auth } from "sk/server/auth";
-import { api, HydrateClient } from "sk/trpc/server";
+'use client'
 
-export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await auth();
+import GoogleButton from "react-google-button";
 
-  if (session?.user) {
-    void api.post.getLatest.prefetch();
-  }
 
+export default function Home() {
+  
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        
-      </main>
-    </HydrateClient>
+   <main className="p-10">
+    <h1>Home</h1>
+    <GoogleButton className="mx-auto mt-16"/>
+   </main>
   );
 }
