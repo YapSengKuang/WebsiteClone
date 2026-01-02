@@ -1,12 +1,11 @@
-import { getUserSession } from '@/lib/session'
-
+import { auth } from "../server/auth";
 
 
 export default async function Home() {
-  const user = await getUserSession()
+  const session = await auth()
   return (
     <main className="">
-      {JSON.stringify(user)}
+      {JSON.stringify(session)}
     </main>
   )
 }
