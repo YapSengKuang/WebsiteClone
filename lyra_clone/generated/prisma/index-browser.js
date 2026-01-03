@@ -121,49 +121,37 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById'
+exports.Prisma.BaseScalarFieldEnum = {
+  base_id: 'base_id',
+  base_name: 'base_name',
+  user_id: 'user_id'
 };
 
-exports.Prisma.AccountScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
+exports.Prisma.TableScalarFieldEnum = {
+  table_id: 'table_id',
+  base_id: 'base_id',
+  table_name: 'table_name'
+};
+
+exports.Prisma.FieldScalarFieldEnum = {
+  field_id: 'field_id',
+  table_id: 'table_id',
+  name: 'name',
   type: 'type',
-  provider: 'provider',
-  providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
-  access_token: 'access_token',
-  expires_at: 'expires_at',
-  token_type: 'token_type',
-  scope: 'scope',
-  id_token: 'id_token',
-  session_state: 'session_state',
-  refresh_token_expires_in: 'refresh_token_expires_in'
+  options: 'options',
+  order_index: 'order_index'
 };
 
-exports.Prisma.SessionScalarFieldEnum = {
-  id: 'id',
-  sessionToken: 'sessionToken',
-  userId: 'userId',
-  expires: 'expires'
+exports.Prisma.RowScalarFieldEnum = {
+  row_id: 'row_id',
+  table_id: 'table_id'
 };
 
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image'
-};
-
-exports.Prisma.VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
+exports.Prisma.CellScalarFieldEnum = {
+  cell_id: 'cell_id',
+  field_id: 'field_id',
+  row_id: 'row_id',
+  value: 'value'
 };
 
 exports.Prisma.SortOrder = {
@@ -171,23 +159,40 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+exports.FieldType = exports.$Enums.FieldType = {
+  text: 'text',
+  number: 'number',
+  date: 'date',
+  checkbox: 'checkbox',
+  single_select: 'single_select',
+  multi_select: 'multi_select',
+  link: 'link',
+  formula: 'formula',
+  lookup: 'lookup',
+  rollup: 'rollup',
+  attachment: 'attachment'
 };
 
-
 exports.Prisma.ModelName = {
-  Post: 'Post',
-  Account: 'Account',
-  Session: 'Session',
-  User: 'User',
-  VerificationToken: 'VerificationToken'
+  Base: 'Base',
+  Table: 'Table',
+  Field: 'Field',
+  Row: 'Row',
+  Cell: 'Cell'
 };
 
 /**

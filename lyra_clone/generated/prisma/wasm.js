@@ -93,49 +93,37 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById'
+exports.Prisma.BaseScalarFieldEnum = {
+  base_id: 'base_id',
+  base_name: 'base_name',
+  user_id: 'user_id'
 };
 
-exports.Prisma.AccountScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
+exports.Prisma.TableScalarFieldEnum = {
+  table_id: 'table_id',
+  base_id: 'base_id',
+  table_name: 'table_name'
+};
+
+exports.Prisma.FieldScalarFieldEnum = {
+  field_id: 'field_id',
+  table_id: 'table_id',
+  name: 'name',
   type: 'type',
-  provider: 'provider',
-  providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
-  access_token: 'access_token',
-  expires_at: 'expires_at',
-  token_type: 'token_type',
-  scope: 'scope',
-  id_token: 'id_token',
-  session_state: 'session_state',
-  refresh_token_expires_in: 'refresh_token_expires_in'
+  options: 'options',
+  order_index: 'order_index'
 };
 
-exports.Prisma.SessionScalarFieldEnum = {
-  id: 'id',
-  sessionToken: 'sessionToken',
-  userId: 'userId',
-  expires: 'expires'
+exports.Prisma.RowScalarFieldEnum = {
+  row_id: 'row_id',
+  table_id: 'table_id'
 };
 
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image'
-};
-
-exports.Prisma.VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
+exports.Prisma.CellScalarFieldEnum = {
+  cell_id: 'cell_id',
+  field_id: 'field_id',
+  row_id: 'row_id',
+  value: 'value'
 };
 
 exports.Prisma.SortOrder = {
@@ -143,23 +131,40 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+exports.FieldType = exports.$Enums.FieldType = {
+  text: 'text',
+  number: 'number',
+  date: 'date',
+  checkbox: 'checkbox',
+  single_select: 'single_select',
+  multi_select: 'multi_select',
+  link: 'link',
+  formula: 'formula',
+  lookup: 'lookup',
+  rollup: 'rollup',
+  attachment: 'attachment'
 };
 
-
 exports.Prisma.ModelName = {
-  Post: 'Post',
-  Account: 'Account',
-  Session: 'Session',
-  User: 'User',
-  VerificationToken: 'VerificationToken'
+  Base: 'Base',
+  Table: 'Table',
+  Field: 'Field',
+  Row: 'Row',
+  Cell: 'Cell'
 };
 /**
  * Create the Client
@@ -200,6 +205,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -208,13 +214,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below\n  // Further reading:\n  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema\n  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Post {\n  id        Int      @id @default(autoincrement())\n  name      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  createdBy   User   @relation(fields: [createdById], references: [id])\n  createdById String\n\n  @@index([name])\n}\n\n// Necessary for Next auth\nmodel Account {\n  id                       String  @id @default(cuid())\n  userId                   String\n  type                     String\n  provider                 String\n  providerAccountId        String\n  refresh_token            String? // @db.Text\n  access_token             String? // @db.Text\n  expires_at               Int?\n  token_type               String?\n  scope                    String?\n  id_token                 String? // @db.Text\n  session_state            String?\n  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)\n  refresh_token_expires_in Int?\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel User {\n  id            String    @id @default(cuid())\n  name          String?\n  email         String?   @unique\n  emailVerified DateTime?\n  image         String?\n  accounts      Account[]\n  sessions      Session[]\n  posts         Post[]\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n",
-  "inlineSchemaHash": "dd9a6edd7dcf3768e8fd246695361ce51823871115a517c30ff53e4d5bffa20b",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below\n  // Further reading:\n  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema\n  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Base {\n  base_id   String @id @default(cuid())\n  base_name String @default(\"default base\")\n  user_id   String\n\n  // Relations\n  tables Table[]\n}\n\nmodel Table {\n  table_id   String @id @default(cuid())\n  base_id    String\n  table_name String\n\n  // Relations\n  base   Base    @relation(fields: [base_id], references: [base_id])\n  fields Field[]\n  rows   Row[]\n}\n\nmodel Field {\n  field_id    String    @id @default(cuid())\n  table_id    String\n  name        String\n  type        FieldType\n  options     Json\n  order_index Int\n\n  // Relations\n  table Table  @relation(fields: [table_id], references: [table_id])\n  cells Cell[]\n}\n\nmodel Row {\n  row_id   String @id @default(cuid())\n  table_id String\n\n  // Relations\n  table Table  @relation(fields: [table_id], references: [table_id])\n  cells Cell[]\n}\n\nmodel Cell {\n  cell_id  String @id @default(cuid())\n  field_id String\n  row_id   String\n  value    Json // <-- JSON supports all field types\n\n  // Relations\n  field Field @relation(fields: [field_id], references: [field_id])\n  row   Row   @relation(fields: [row_id], references: [row_id])\n}\n\nenum FieldType {\n  text\n  number\n  date\n  checkbox\n  single_select\n  multi_select\n  link\n  formula\n  lookup\n  rollup\n  attachment\n}\n",
+  "inlineSchemaHash": "18f816a036b567b75ada57775c1b36b8d7d130408f0bbebda1663d2f0da131a0",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Post\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdBy\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PostToUser\"},{\"name\":\"createdById\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"providerAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refresh_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"access_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires_at\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"token_type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"scope\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"id_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"session_state\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"refresh_token_expires_in\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessionToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emailVerified\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"posts\",\"kind\":\"object\",\"type\":\"Post\",\"relationName\":\"PostToUser\"}],\"dbName\":null},\"VerificationToken\":{\"fields\":[{\"name\":\"identifier\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Base\":{\"fields\":[{\"name\":\"base_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tables\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"BaseToTable\"}],\"dbName\":null},\"Table\":{\"fields\":[{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base\",\"kind\":\"object\",\"type\":\"Base\",\"relationName\":\"BaseToTable\"},{\"name\":\"fields\",\"kind\":\"object\",\"type\":\"Field\",\"relationName\":\"FieldToTable\"},{\"name\":\"rows\",\"kind\":\"object\",\"type\":\"Row\",\"relationName\":\"RowToTable\"}],\"dbName\":null},\"Field\":{\"fields\":[{\"name\":\"field_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"FieldType\"},{\"name\":\"options\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"order_index\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"table\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"FieldToTable\"},{\"name\":\"cells\",\"kind\":\"object\",\"type\":\"Cell\",\"relationName\":\"CellToField\"}],\"dbName\":null},\"Row\":{\"fields\":[{\"name\":\"row_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"RowToTable\"},{\"name\":\"cells\",\"kind\":\"object\",\"type\":\"Cell\",\"relationName\":\"CellToRow\"}],\"dbName\":null},\"Cell\":{\"fields\":[{\"name\":\"cell_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"field_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"row_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"field\",\"kind\":\"object\",\"type\":\"Field\",\"relationName\":\"CellToField\"},{\"name\":\"row\",\"kind\":\"object\",\"type\":\"Row\",\"relationName\":\"CellToRow\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),
