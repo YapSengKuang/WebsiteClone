@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 import { db } from "../../db";
 import { plugin } from "typescript-eslint";
 
@@ -13,10 +13,12 @@ export const baseRouter = createTRPCRouter({
             });
         }
     ),
-    getAll: publicProcedure.query(({ ctx }) => {
-        return db.base.findMany();
-        }
-    ),
+    getAll: protectedProcedure.query(async ({ ctx }) => { 
+        return ctx.db.base.findMany({ 
+            where: { user_id: ctx.session.user.id }, 
+            orderBy: { base_name: "asc" }, 
+        }); 
+    }),
     createBase: publicProcedure
         .input(z.object({
             base_name: z.string(),
