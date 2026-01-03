@@ -68,10 +68,12 @@ export default function GridComponent({ fields, rows, cells }: GridComponentProp
           <EditableCell
             cellId={cell.id}
             initialValue={value}
-            fieldType={field.field_type}   // <-- pass field type
-          />
-        );
-      },
+            fieldType={field.type}
+            fieldOptions={field.options}
+    />
+  );
+},
+
     })),
   [fields, cellMap, cells]
 );

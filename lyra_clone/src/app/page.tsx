@@ -3,6 +3,8 @@
 import { useSession } from "@clerk/nextjs";
 import { api } from "@/trpc/react";
 import Link from "next/link";
+import CreateBaseButton from "./_components/CreateBaseButton";
+import BaseCard from "./_components/BaseCard";
 
 export default function Home() {
   const { session } = useSession();
@@ -23,21 +25,13 @@ export default function Home() {
         
         */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {bases?.map((base: { id: string; base_name: string }) => (
-
-            <Link
-              key={base.id}
-              href={`/base/${base.id}`}
-              className="border rounded-lg p-4 hover:bg-gray-50 transition"
-            >
-              {base.base_name}
-            </Link>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {bases?.map((base) => (
+            <BaseCard key={base.id} id={base.id} name={base.base_name} />
           ))}
 
-        {/* Create Base Button */}
-        <button className="border rounded-lg p-4 bg-blue-600 text-white">
-          + Create Base
-        </button>
+          <CreateBaseButton />
+        </div>
       </div>
       </div>
       
