@@ -19,14 +19,15 @@ export const baseRouter = createTRPCRouter({
             orderBy: { base_name: "asc" }, 
         }); 
     }),
-    createBase: publicProcedure
-        .input(z.object({
-            base_name: z.string(),
-            user_id: z.string(),
-            })
-        )
-        .mutation(async ({ input }) => {
-            return db.base.create({ data: input });
+    createBase: protectedProcedure
+        .input(z.object({name: z.string()}))
+        .mutation(({ ctx, input }) => {
+            return ctx.db.base.create({ 
+                data: {
+                    base_name: input.name,
+                    user_id: ctx.session.user.id,
+                }
+            });
         }
     ),
     getAllWithTables: publicProcedure.query(async () => {

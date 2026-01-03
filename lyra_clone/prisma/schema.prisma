@@ -32,7 +32,7 @@ model Field {
   id          String   @id @default(cuid())
   table_id    String
   name        String
-  type        FieldType
+  type        String
   options     Json
   order_index Int
 
