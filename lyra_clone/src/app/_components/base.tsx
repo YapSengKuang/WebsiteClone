@@ -1,6 +1,6 @@
 "use client";
 
-import { api } from "sk/trpc/server";
+import { api } from "@/trpc/server";
 
 export default function BaseList() {
     const { data, isLoading } = api.base.getAllWithTables.useQuery();
