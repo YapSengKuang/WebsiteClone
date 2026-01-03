@@ -27,7 +27,7 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "sk/*": ["./src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

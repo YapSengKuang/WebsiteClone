@@ -94,19 +94,19 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.BaseScalarFieldEnum = {
-  base_id: 'base_id',
+  id: 'id',
   base_name: 'base_name',
   user_id: 'user_id'
 };
 
 exports.Prisma.TableScalarFieldEnum = {
-  table_id: 'table_id',
+  id: 'id',
   base_id: 'base_id',
   table_name: 'table_name'
 };
 
 exports.Prisma.FieldScalarFieldEnum = {
-  field_id: 'field_id',
+  id: 'id',
   table_id: 'table_id',
   name: 'name',
   type: 'type',
@@ -115,12 +115,12 @@ exports.Prisma.FieldScalarFieldEnum = {
 };
 
 exports.Prisma.RowScalarFieldEnum = {
-  row_id: 'row_id',
+  id: 'id',
   table_id: 'table_id'
 };
 
 exports.Prisma.CellScalarFieldEnum = {
-  cell_id: 'cell_id',
+  id: 'id',
   field_id: 'field_id',
   row_id: 'row_id',
   value: 'value'
@@ -214,13 +214,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below\n  // Further reading:\n  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema\n  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Base {\n  base_id   String @id @default(cuid())\n  base_name String @default(\"default base\")\n  user_id   String\n\n  // Relations\n  tables Table[]\n}\n\nmodel Table {\n  table_id   String @id @default(cuid())\n  base_id    String\n  table_name String\n\n  // Relations\n  base   Base    @relation(fields: [base_id], references: [base_id])\n  fields Field[]\n  rows   Row[]\n}\n\nmodel Field {\n  field_id    String    @id @default(cuid())\n  table_id    String\n  name        String\n  type        FieldType\n  options     Json\n  order_index Int\n\n  // Relations\n  table Table  @relation(fields: [table_id], references: [table_id])\n  cells Cell[]\n}\n\nmodel Row {\n  row_id   String @id @default(cuid())\n  table_id String\n\n  // Relations\n  table Table  @relation(fields: [table_id], references: [table_id])\n  cells Cell[]\n}\n\nmodel Cell {\n  cell_id  String @id @default(cuid())\n  field_id String\n  row_id   String\n  value    Json // <-- JSON supports all field types\n\n  // Relations\n  field Field @relation(fields: [field_id], references: [field_id])\n  row   Row   @relation(fields: [row_id], references: [row_id])\n}\n\nenum FieldType {\n  text\n  number\n  date\n  checkbox\n  single_select\n  multi_select\n  link\n  formula\n  lookup\n  rollup\n  attachment\n}\n",
-  "inlineSchemaHash": "18f816a036b567b75ada57775c1b36b8d7d130408f0bbebda1663d2f0da131a0",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Base {\n  id        String @id @default(cuid())\n  base_name String @default(\"default base\")\n  user_id   String\n\n  tables Table[]\n}\n\nmodel Table {\n  id         String @id @default(cuid())\n  base_id    String\n  table_name String\n\n  base   Base    @relation(fields: [base_id], references: [id])\n  fields Field[]\n  rows   Row[]\n}\n\nmodel Field {\n  id          String    @id @default(cuid())\n  table_id    String\n  name        String\n  type        FieldType\n  options     Json\n  order_index Int\n\n  table Table  @relation(fields: [table_id], references: [id])\n  cells Cell[]\n}\n\nmodel Row {\n  id       String @id @default(cuid())\n  table_id String\n\n  table Table  @relation(fields: [table_id], references: [id])\n  cells Cell[]\n}\n\nmodel Cell {\n  id       String @id @default(cuid())\n  field_id String\n  row_id   String\n  value    Json\n\n  field Field @relation(fields: [field_id], references: [id])\n  row   Row   @relation(fields: [row_id], references: [id])\n}\n\nenum FieldType {\n  text\n  number\n  date\n  checkbox\n  single_select\n  multi_select\n  link\n  formula\n  lookup\n  rollup\n  attachment\n}\n",
+  "inlineSchemaHash": "ad8f2743153528d989da59f08123ca67150de73a2427f35d0409736f611f200c",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Base\":{\"fields\":[{\"name\":\"base_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tables\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"BaseToTable\"}],\"dbName\":null},\"Table\":{\"fields\":[{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base\",\"kind\":\"object\",\"type\":\"Base\",\"relationName\":\"BaseToTable\"},{\"name\":\"fields\",\"kind\":\"object\",\"type\":\"Field\",\"relationName\":\"FieldToTable\"},{\"name\":\"rows\",\"kind\":\"object\",\"type\":\"Row\",\"relationName\":\"RowToTable\"}],\"dbName\":null},\"Field\":{\"fields\":[{\"name\":\"field_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"FieldType\"},{\"name\":\"options\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"order_index\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"table\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"FieldToTable\"},{\"name\":\"cells\",\"kind\":\"object\",\"type\":\"Cell\",\"relationName\":\"CellToField\"}],\"dbName\":null},\"Row\":{\"fields\":[{\"name\":\"row_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"RowToTable\"},{\"name\":\"cells\",\"kind\":\"object\",\"type\":\"Cell\",\"relationName\":\"CellToRow\"}],\"dbName\":null},\"Cell\":{\"fields\":[{\"name\":\"cell_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"field_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"row_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"field\",\"kind\":\"object\",\"type\":\"Field\",\"relationName\":\"CellToField\"},{\"name\":\"row\",\"kind\":\"object\",\"type\":\"Row\",\"relationName\":\"CellToRow\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Base\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tables\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"BaseToTable\"}],\"dbName\":null},\"Table\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"base\",\"kind\":\"object\",\"type\":\"Base\",\"relationName\":\"BaseToTable\"},{\"name\":\"fields\",\"kind\":\"object\",\"type\":\"Field\",\"relationName\":\"FieldToTable\"},{\"name\":\"rows\",\"kind\":\"object\",\"type\":\"Row\",\"relationName\":\"RowToTable\"}],\"dbName\":null},\"Field\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"FieldType\"},{\"name\":\"options\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"order_index\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"table\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"FieldToTable\"},{\"name\":\"cells\",\"kind\":\"object\",\"type\":\"Cell\",\"relationName\":\"CellToField\"}],\"dbName\":null},\"Row\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"table\",\"kind\":\"object\",\"type\":\"Table\",\"relationName\":\"RowToTable\"},{\"name\":\"cells\",\"kind\":\"object\",\"type\":\"Cell\",\"relationName\":\"CellToRow\"}],\"dbName\":null},\"Cell\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"field_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"row_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"value\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"field\",\"kind\":\"object\",\"type\":\"Field\",\"relationName\":\"CellToField\"},{\"name\":\"row\",\"kind\":\"object\",\"type\":\"Row\",\"relationName\":\"CellToRow\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

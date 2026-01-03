@@ -3,69 +3,59 @@
 
 generator client {
     provider = "prisma-client-js"
-    output   = "../generated/prisma"
 }
 
 datasource db {
     provider = "postgresql"
-    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
 }
 
 model Base {
-  base_id    String   @id @default(cuid())
+  id         String   @id @default(cuid())
   base_name  String   @default("default base")
   user_id    String
 
-  // Relations
   tables     Table[]
 }
 
 model Table {
-  table_id    String   @id @default(cuid())
+  id          String   @id @default(cuid())
   base_id     String
   table_name  String
 
-  // Relations
-  base        Base     @relation(fields: [base_id], references: [base_id])
+  base        Base     @relation(fields: [base_id], references: [id])
   fields      Field[]
   rows        Row[]
 }
 
 model Field {
-  field_id    String   @id @default(cuid())
+  id          String   @id @default(cuid())
   table_id    String
   name        String
   type        FieldType
   options     Json
   order_index Int
 
-  // Relations
-  table       Table    @relation(fields: [table_id], references: [table_id])
+  table       Table    @relation(fields: [table_id], references: [id])
   cells       Cell[]
 }
 
 model Row {
-  row_id     String   @id @default(cuid())
-  table_id   String
+  id        String   @id @default(cuid())
+  table_id  String
 
-  // Relations
-  table      Table    @relation(fields: [table_id], references: [table_id])
-  cells      Cell[]
+  table     Table    @relation(fields: [table_id], references: [id])
+  cells     Cell[]
 }
 
 model Cell {
-  cell_id    String   @id @default(cuid())
-  field_id   String
-  row_id     String
-  value      Json     // <-- JSON supports all field types
+  id        String   @id @default(cuid())
+  field_id  String
+  row_id    String
+  value     Json
 
-  // Relations
-  field      Field    @relation(fields: [field_id], references: [field_id])
-  row        Row      @relation(fields: [row_id], references: [row_id])
+  field     Field    @relation(fields: [field_id], references: [id])
+  row       Row      @relation(fields: [row_id], references: [id])
 }
 
 enum FieldType {

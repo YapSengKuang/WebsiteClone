@@ -1,20 +1,20 @@
-import { auth } from "../server/auth";
-import { signIn } from "../server/auth";
+"use client";
 
-export default async function Home() {
-  const session = await auth()
+import { useSession } from "@clerk/nextjs";
+import { api } from "@/trpc/react";
+
+export default function Home() {
+  const { session } = useSession();
+  const { data: bases } = api.base.getAll.useQuery();
+
+  if (!session) return <div>Please sign in</div>;
+
   return (
     <main>
-      <div className="min-h-screen grid grid-cols-2">
-        <div className="flex items-center justify-center">
-          test
-        </div>
-        <div className="flex items-center justify-center">
-          esrse
-        </div>
-      </div>
-      
+      <h1>Welcome {session.user?.fullName}</h1>
+      {bases?.map((b) => (
+        <div key={b.id}>{b.base_name}</div>
+      ))}
     </main>
-
-  )
+  );
 }

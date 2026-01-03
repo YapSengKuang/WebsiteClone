@@ -1394,19 +1394,19 @@ export namespace Prisma {
   }
 
   export type BaseMinAggregateOutputType = {
-    base_id: string | null
+    id: string | null
     base_name: string | null
     user_id: string | null
   }
 
   export type BaseMaxAggregateOutputType = {
-    base_id: string | null
+    id: string | null
     base_name: string | null
     user_id: string | null
   }
 
   export type BaseCountAggregateOutputType = {
-    base_id: number
+    id: number
     base_name: number
     user_id: number
     _all: number
@@ -1414,19 +1414,19 @@ export namespace Prisma {
 
 
   export type BaseMinAggregateInputType = {
-    base_id?: true
+    id?: true
     base_name?: true
     user_id?: true
   }
 
   export type BaseMaxAggregateInputType = {
-    base_id?: true
+    id?: true
     base_name?: true
     user_id?: true
   }
 
   export type BaseCountAggregateInputType = {
-    base_id?: true
+    id?: true
     base_name?: true
     user_id?: true
     _all?: true
@@ -1505,7 +1505,7 @@ export namespace Prisma {
   }
 
   export type BaseGroupByOutputType = {
-    base_id: string
+    id: string
     base_name: string
     user_id: string
     _count: BaseCountAggregateOutputType | null
@@ -1528,7 +1528,7 @@ export namespace Prisma {
 
 
   export type BaseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    base_id?: boolean
+    id?: boolean
     base_name?: boolean
     user_id?: boolean
     tables?: boolean | Base$tablesArgs<ExtArgs>
@@ -1536,24 +1536,24 @@ export namespace Prisma {
   }, ExtArgs["result"]["base"]>
 
   export type BaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    base_id?: boolean
+    id?: boolean
     base_name?: boolean
     user_id?: boolean
   }, ExtArgs["result"]["base"]>
 
   export type BaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    base_id?: boolean
+    id?: boolean
     base_name?: boolean
     user_id?: boolean
   }, ExtArgs["result"]["base"]>
 
   export type BaseSelectScalar = {
-    base_id?: boolean
+    id?: boolean
     base_name?: boolean
     user_id?: boolean
   }
 
-  export type BaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"base_id" | "base_name" | "user_id", ExtArgs["result"]["base"]>
+  export type BaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "base_name" | "user_id", ExtArgs["result"]["base"]>
   export type BaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tables?: boolean | Base$tablesArgs<ExtArgs>
     _count?: boolean | BaseCountOutputTypeDefaultArgs<ExtArgs>
@@ -1567,7 +1567,7 @@ export namespace Prisma {
       tables: Prisma.$TablePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      base_id: string
+      id: string
       base_name: string
       user_id: string
     }, ExtArgs["result"]["base"]>
@@ -1653,8 +1653,8 @@ export namespace Prisma {
      * // Get first 10 Bases
      * const bases = await prisma.base.findMany({ take: 10 })
      * 
-     * // Only select the `base_id`
-     * const baseWithBase_idOnly = await prisma.base.findMany({ select: { base_id: true } })
+     * // Only select the `id`
+     * const baseWithIdOnly = await prisma.base.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends BaseFindManyArgs>(args?: SelectSubset<T, BaseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1698,9 +1698,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Bases and only return the `base_id`
-     * const baseWithBase_idOnly = await prisma.base.createManyAndReturn({
-     *   select: { base_id: true },
+     * // Create many Bases and only return the `id`
+     * const baseWithIdOnly = await prisma.base.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -1789,9 +1789,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Bases and only return the `base_id`
-     * const baseWithBase_idOnly = await prisma.base.updateManyAndReturn({
-     *   select: { base_id: true },
+     * // Update zero or more Bases and only return the `id`
+     * const baseWithIdOnly = await prisma.base.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1994,7 +1994,7 @@ export namespace Prisma {
    * Fields of the Base model
    */
   interface BaseFieldRefs {
-    readonly base_id: FieldRef<"Base", 'String'>
+    readonly id: FieldRef<"Base", 'String'>
     readonly base_name: FieldRef<"Base", 'String'>
     readonly user_id: FieldRef<"Base", 'String'>
   }
@@ -2438,19 +2438,19 @@ export namespace Prisma {
   }
 
   export type TableMinAggregateOutputType = {
-    table_id: string | null
+    id: string | null
     base_id: string | null
     table_name: string | null
   }
 
   export type TableMaxAggregateOutputType = {
-    table_id: string | null
+    id: string | null
     base_id: string | null
     table_name: string | null
   }
 
   export type TableCountAggregateOutputType = {
-    table_id: number
+    id: number
     base_id: number
     table_name: number
     _all: number
@@ -2458,19 +2458,19 @@ export namespace Prisma {
 
 
   export type TableMinAggregateInputType = {
-    table_id?: true
+    id?: true
     base_id?: true
     table_name?: true
   }
 
   export type TableMaxAggregateInputType = {
-    table_id?: true
+    id?: true
     base_id?: true
     table_name?: true
   }
 
   export type TableCountAggregateInputType = {
-    table_id?: true
+    id?: true
     base_id?: true
     table_name?: true
     _all?: true
@@ -2549,7 +2549,7 @@ export namespace Prisma {
   }
 
   export type TableGroupByOutputType = {
-    table_id: string
+    id: string
     base_id: string
     table_name: string
     _count: TableCountAggregateOutputType | null
@@ -2572,7 +2572,7 @@ export namespace Prisma {
 
 
   export type TableSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    table_id?: boolean
+    id?: boolean
     base_id?: boolean
     table_name?: boolean
     base?: boolean | BaseDefaultArgs<ExtArgs>
@@ -2582,26 +2582,26 @@ export namespace Prisma {
   }, ExtArgs["result"]["table"]>
 
   export type TableSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    table_id?: boolean
+    id?: boolean
     base_id?: boolean
     table_name?: boolean
     base?: boolean | BaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["table"]>
 
   export type TableSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    table_id?: boolean
+    id?: boolean
     base_id?: boolean
     table_name?: boolean
     base?: boolean | BaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["table"]>
 
   export type TableSelectScalar = {
-    table_id?: boolean
+    id?: boolean
     base_id?: boolean
     table_name?: boolean
   }
 
-  export type TableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"table_id" | "base_id" | "table_name", ExtArgs["result"]["table"]>
+  export type TableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "base_id" | "table_name", ExtArgs["result"]["table"]>
   export type TableInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     base?: boolean | BaseDefaultArgs<ExtArgs>
     fields?: boolean | Table$fieldsArgs<ExtArgs>
@@ -2623,7 +2623,7 @@ export namespace Prisma {
       rows: Prisma.$RowPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      table_id: string
+      id: string
       base_id: string
       table_name: string
     }, ExtArgs["result"]["table"]>
@@ -2709,8 +2709,8 @@ export namespace Prisma {
      * // Get first 10 Tables
      * const tables = await prisma.table.findMany({ take: 10 })
      * 
-     * // Only select the `table_id`
-     * const tableWithTable_idOnly = await prisma.table.findMany({ select: { table_id: true } })
+     * // Only select the `id`
+     * const tableWithIdOnly = await prisma.table.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends TableFindManyArgs>(args?: SelectSubset<T, TableFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -2754,9 +2754,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Tables and only return the `table_id`
-     * const tableWithTable_idOnly = await prisma.table.createManyAndReturn({
-     *   select: { table_id: true },
+     * // Create many Tables and only return the `id`
+     * const tableWithIdOnly = await prisma.table.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -2845,9 +2845,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Tables and only return the `table_id`
-     * const tableWithTable_idOnly = await prisma.table.updateManyAndReturn({
-     *   select: { table_id: true },
+     * // Update zero or more Tables and only return the `id`
+     * const tableWithIdOnly = await prisma.table.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3052,7 +3052,7 @@ export namespace Prisma {
    * Fields of the Table model
    */
   interface TableFieldRefs {
-    readonly table_id: FieldRef<"Table", 'String'>
+    readonly id: FieldRef<"Table", 'String'>
     readonly base_id: FieldRef<"Table", 'String'>
     readonly table_name: FieldRef<"Table", 'String'>
   }
@@ -3538,7 +3538,7 @@ export namespace Prisma {
   }
 
   export type FieldMinAggregateOutputType = {
-    field_id: string | null
+    id: string | null
     table_id: string | null
     name: string | null
     type: $Enums.FieldType | null
@@ -3546,7 +3546,7 @@ export namespace Prisma {
   }
 
   export type FieldMaxAggregateOutputType = {
-    field_id: string | null
+    id: string | null
     table_id: string | null
     name: string | null
     type: $Enums.FieldType | null
@@ -3554,7 +3554,7 @@ export namespace Prisma {
   }
 
   export type FieldCountAggregateOutputType = {
-    field_id: number
+    id: number
     table_id: number
     name: number
     type: number
@@ -3573,7 +3573,7 @@ export namespace Prisma {
   }
 
   export type FieldMinAggregateInputType = {
-    field_id?: true
+    id?: true
     table_id?: true
     name?: true
     type?: true
@@ -3581,7 +3581,7 @@ export namespace Prisma {
   }
 
   export type FieldMaxAggregateInputType = {
-    field_id?: true
+    id?: true
     table_id?: true
     name?: true
     type?: true
@@ -3589,7 +3589,7 @@ export namespace Prisma {
   }
 
   export type FieldCountAggregateInputType = {
-    field_id?: true
+    id?: true
     table_id?: true
     name?: true
     type?: true
@@ -3685,7 +3685,7 @@ export namespace Prisma {
   }
 
   export type FieldGroupByOutputType = {
-    field_id: string
+    id: string
     table_id: string
     name: string
     type: $Enums.FieldType
@@ -3713,7 +3713,7 @@ export namespace Prisma {
 
 
   export type FieldSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    field_id?: boolean
+    id?: boolean
     table_id?: boolean
     name?: boolean
     type?: boolean
@@ -3725,7 +3725,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["field"]>
 
   export type FieldSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    field_id?: boolean
+    id?: boolean
     table_id?: boolean
     name?: boolean
     type?: boolean
@@ -3735,7 +3735,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["field"]>
 
   export type FieldSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    field_id?: boolean
+    id?: boolean
     table_id?: boolean
     name?: boolean
     type?: boolean
@@ -3745,7 +3745,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["field"]>
 
   export type FieldSelectScalar = {
-    field_id?: boolean
+    id?: boolean
     table_id?: boolean
     name?: boolean
     type?: boolean
@@ -3753,7 +3753,7 @@ export namespace Prisma {
     order_index?: boolean
   }
 
-  export type FieldOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"field_id" | "table_id" | "name" | "type" | "options" | "order_index", ExtArgs["result"]["field"]>
+  export type FieldOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "table_id" | "name" | "type" | "options" | "order_index", ExtArgs["result"]["field"]>
   export type FieldInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     table?: boolean | TableDefaultArgs<ExtArgs>
     cells?: boolean | Field$cellsArgs<ExtArgs>
@@ -3773,7 +3773,7 @@ export namespace Prisma {
       cells: Prisma.$CellPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      field_id: string
+      id: string
       table_id: string
       name: string
       type: $Enums.FieldType
@@ -3862,8 +3862,8 @@ export namespace Prisma {
      * // Get first 10 Fields
      * const fields = await prisma.field.findMany({ take: 10 })
      * 
-     * // Only select the `field_id`
-     * const fieldWithField_idOnly = await prisma.field.findMany({ select: { field_id: true } })
+     * // Only select the `id`
+     * const fieldWithIdOnly = await prisma.field.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends FieldFindManyArgs>(args?: SelectSubset<T, FieldFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FieldPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3907,9 +3907,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Fields and only return the `field_id`
-     * const fieldWithField_idOnly = await prisma.field.createManyAndReturn({
-     *   select: { field_id: true },
+     * // Create many Fields and only return the `id`
+     * const fieldWithIdOnly = await prisma.field.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -3998,9 +3998,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Fields and only return the `field_id`
-     * const fieldWithField_idOnly = await prisma.field.updateManyAndReturn({
-     *   select: { field_id: true },
+     * // Update zero or more Fields and only return the `id`
+     * const fieldWithIdOnly = await prisma.field.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4204,7 +4204,7 @@ export namespace Prisma {
    * Fields of the Field model
    */
   interface FieldFieldRefs {
-    readonly field_id: FieldRef<"Field", 'String'>
+    readonly id: FieldRef<"Field", 'String'>
     readonly table_id: FieldRef<"Field", 'String'>
     readonly name: FieldRef<"Field", 'String'>
     readonly type: FieldRef<"Field", 'FieldType'>
@@ -4659,34 +4659,34 @@ export namespace Prisma {
   }
 
   export type RowMinAggregateOutputType = {
-    row_id: string | null
+    id: string | null
     table_id: string | null
   }
 
   export type RowMaxAggregateOutputType = {
-    row_id: string | null
+    id: string | null
     table_id: string | null
   }
 
   export type RowCountAggregateOutputType = {
-    row_id: number
+    id: number
     table_id: number
     _all: number
   }
 
 
   export type RowMinAggregateInputType = {
-    row_id?: true
+    id?: true
     table_id?: true
   }
 
   export type RowMaxAggregateInputType = {
-    row_id?: true
+    id?: true
     table_id?: true
   }
 
   export type RowCountAggregateInputType = {
-    row_id?: true
+    id?: true
     table_id?: true
     _all?: true
   }
@@ -4764,7 +4764,7 @@ export namespace Prisma {
   }
 
   export type RowGroupByOutputType = {
-    row_id: string
+    id: string
     table_id: string
     _count: RowCountAggregateOutputType | null
     _min: RowMinAggregateOutputType | null
@@ -4786,7 +4786,7 @@ export namespace Prisma {
 
 
   export type RowSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    row_id?: boolean
+    id?: boolean
     table_id?: boolean
     table?: boolean | TableDefaultArgs<ExtArgs>
     cells?: boolean | Row$cellsArgs<ExtArgs>
@@ -4794,23 +4794,23 @@ export namespace Prisma {
   }, ExtArgs["result"]["row"]>
 
   export type RowSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    row_id?: boolean
+    id?: boolean
     table_id?: boolean
     table?: boolean | TableDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["row"]>
 
   export type RowSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    row_id?: boolean
+    id?: boolean
     table_id?: boolean
     table?: boolean | TableDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["row"]>
 
   export type RowSelectScalar = {
-    row_id?: boolean
+    id?: boolean
     table_id?: boolean
   }
 
-  export type RowOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"row_id" | "table_id", ExtArgs["result"]["row"]>
+  export type RowOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "table_id", ExtArgs["result"]["row"]>
   export type RowInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     table?: boolean | TableDefaultArgs<ExtArgs>
     cells?: boolean | Row$cellsArgs<ExtArgs>
@@ -4830,7 +4830,7 @@ export namespace Prisma {
       cells: Prisma.$CellPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      row_id: string
+      id: string
       table_id: string
     }, ExtArgs["result"]["row"]>
     composites: {}
@@ -4915,8 +4915,8 @@ export namespace Prisma {
      * // Get first 10 Rows
      * const rows = await prisma.row.findMany({ take: 10 })
      * 
-     * // Only select the `row_id`
-     * const rowWithRow_idOnly = await prisma.row.findMany({ select: { row_id: true } })
+     * // Only select the `id`
+     * const rowWithIdOnly = await prisma.row.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends RowFindManyArgs>(args?: SelectSubset<T, RowFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -4960,9 +4960,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Rows and only return the `row_id`
-     * const rowWithRow_idOnly = await prisma.row.createManyAndReturn({
-     *   select: { row_id: true },
+     * // Create many Rows and only return the `id`
+     * const rowWithIdOnly = await prisma.row.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -5051,9 +5051,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Rows and only return the `row_id`
-     * const rowWithRow_idOnly = await prisma.row.updateManyAndReturn({
-     *   select: { row_id: true },
+     * // Update zero or more Rows and only return the `id`
+     * const rowWithIdOnly = await prisma.row.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5257,7 +5257,7 @@ export namespace Prisma {
    * Fields of the Row model
    */
   interface RowFieldRefs {
-    readonly row_id: FieldRef<"Row", 'String'>
+    readonly id: FieldRef<"Row", 'String'>
     readonly table_id: FieldRef<"Row", 'String'>
   }
     
@@ -5708,19 +5708,19 @@ export namespace Prisma {
   }
 
   export type CellMinAggregateOutputType = {
-    cell_id: string | null
+    id: string | null
     field_id: string | null
     row_id: string | null
   }
 
   export type CellMaxAggregateOutputType = {
-    cell_id: string | null
+    id: string | null
     field_id: string | null
     row_id: string | null
   }
 
   export type CellCountAggregateOutputType = {
-    cell_id: number
+    id: number
     field_id: number
     row_id: number
     value: number
@@ -5729,19 +5729,19 @@ export namespace Prisma {
 
 
   export type CellMinAggregateInputType = {
-    cell_id?: true
+    id?: true
     field_id?: true
     row_id?: true
   }
 
   export type CellMaxAggregateInputType = {
-    cell_id?: true
+    id?: true
     field_id?: true
     row_id?: true
   }
 
   export type CellCountAggregateInputType = {
-    cell_id?: true
+    id?: true
     field_id?: true
     row_id?: true
     value?: true
@@ -5821,7 +5821,7 @@ export namespace Prisma {
   }
 
   export type CellGroupByOutputType = {
-    cell_id: string
+    id: string
     field_id: string
     row_id: string
     value: JsonValue
@@ -5845,7 +5845,7 @@ export namespace Prisma {
 
 
   export type CellSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    cell_id?: boolean
+    id?: boolean
     field_id?: boolean
     row_id?: boolean
     value?: boolean
@@ -5854,7 +5854,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["cell"]>
 
   export type CellSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    cell_id?: boolean
+    id?: boolean
     field_id?: boolean
     row_id?: boolean
     value?: boolean
@@ -5863,7 +5863,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["cell"]>
 
   export type CellSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    cell_id?: boolean
+    id?: boolean
     field_id?: boolean
     row_id?: boolean
     value?: boolean
@@ -5872,13 +5872,13 @@ export namespace Prisma {
   }, ExtArgs["result"]["cell"]>
 
   export type CellSelectScalar = {
-    cell_id?: boolean
+    id?: boolean
     field_id?: boolean
     row_id?: boolean
     value?: boolean
   }
 
-  export type CellOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"cell_id" | "field_id" | "row_id" | "value", ExtArgs["result"]["cell"]>
+  export type CellOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "field_id" | "row_id" | "value", ExtArgs["result"]["cell"]>
   export type CellInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     field?: boolean | FieldDefaultArgs<ExtArgs>
     row?: boolean | RowDefaultArgs<ExtArgs>
@@ -5899,7 +5899,7 @@ export namespace Prisma {
       row: Prisma.$RowPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      cell_id: string
+      id: string
       field_id: string
       row_id: string
       value: Prisma.JsonValue
@@ -5986,8 +5986,8 @@ export namespace Prisma {
      * // Get first 10 Cells
      * const cells = await prisma.cell.findMany({ take: 10 })
      * 
-     * // Only select the `cell_id`
-     * const cellWithCell_idOnly = await prisma.cell.findMany({ select: { cell_id: true } })
+     * // Only select the `id`
+     * const cellWithIdOnly = await prisma.cell.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends CellFindManyArgs>(args?: SelectSubset<T, CellFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CellPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -6031,9 +6031,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Cells and only return the `cell_id`
-     * const cellWithCell_idOnly = await prisma.cell.createManyAndReturn({
-     *   select: { cell_id: true },
+     * // Create many Cells and only return the `id`
+     * const cellWithIdOnly = await prisma.cell.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -6122,9 +6122,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Cells and only return the `cell_id`
-     * const cellWithCell_idOnly = await prisma.cell.updateManyAndReturn({
-     *   select: { cell_id: true },
+     * // Update zero or more Cells and only return the `id`
+     * const cellWithIdOnly = await prisma.cell.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6328,7 +6328,7 @@ export namespace Prisma {
    * Fields of the Cell model
    */
   interface CellFieldRefs {
-    readonly cell_id: FieldRef<"Cell", 'String'>
+    readonly id: FieldRef<"Cell", 'String'>
     readonly field_id: FieldRef<"Cell", 'String'>
     readonly row_id: FieldRef<"Cell", 'String'>
     readonly value: FieldRef<"Cell", 'Json'>
@@ -6761,7 +6761,7 @@ export namespace Prisma {
 
 
   export const BaseScalarFieldEnum: {
-    base_id: 'base_id',
+    id: 'id',
     base_name: 'base_name',
     user_id: 'user_id'
   };
@@ -6770,7 +6770,7 @@ export namespace Prisma {
 
 
   export const TableScalarFieldEnum: {
-    table_id: 'table_id',
+    id: 'id',
     base_id: 'base_id',
     table_name: 'table_name'
   };
@@ -6779,7 +6779,7 @@ export namespace Prisma {
 
 
   export const FieldScalarFieldEnum: {
-    field_id: 'field_id',
+    id: 'id',
     table_id: 'table_id',
     name: 'name',
     type: 'type',
@@ -6791,7 +6791,7 @@ export namespace Prisma {
 
 
   export const RowScalarFieldEnum: {
-    row_id: 'row_id',
+    id: 'id',
     table_id: 'table_id'
   };
 
@@ -6799,7 +6799,7 @@ export namespace Prisma {
 
 
   export const CellScalarFieldEnum: {
-    cell_id: 'cell_id',
+    id: 'id',
     field_id: 'field_id',
     row_id: 'row_id',
     value: 'value'
@@ -6922,31 +6922,31 @@ export namespace Prisma {
     AND?: BaseWhereInput | BaseWhereInput[]
     OR?: BaseWhereInput[]
     NOT?: BaseWhereInput | BaseWhereInput[]
-    base_id?: StringFilter<"Base"> | string
+    id?: StringFilter<"Base"> | string
     base_name?: StringFilter<"Base"> | string
     user_id?: StringFilter<"Base"> | string
     tables?: TableListRelationFilter
   }
 
   export type BaseOrderByWithRelationInput = {
-    base_id?: SortOrder
+    id?: SortOrder
     base_name?: SortOrder
     user_id?: SortOrder
     tables?: TableOrderByRelationAggregateInput
   }
 
   export type BaseWhereUniqueInput = Prisma.AtLeast<{
-    base_id?: string
+    id?: string
     AND?: BaseWhereInput | BaseWhereInput[]
     OR?: BaseWhereInput[]
     NOT?: BaseWhereInput | BaseWhereInput[]
     base_name?: StringFilter<"Base"> | string
     user_id?: StringFilter<"Base"> | string
     tables?: TableListRelationFilter
-  }, "base_id">
+  }, "id">
 
   export type BaseOrderByWithAggregationInput = {
-    base_id?: SortOrder
+    id?: SortOrder
     base_name?: SortOrder
     user_id?: SortOrder
     _count?: BaseCountOrderByAggregateInput
@@ -6958,7 +6958,7 @@ export namespace Prisma {
     AND?: BaseScalarWhereWithAggregatesInput | BaseScalarWhereWithAggregatesInput[]
     OR?: BaseScalarWhereWithAggregatesInput[]
     NOT?: BaseScalarWhereWithAggregatesInput | BaseScalarWhereWithAggregatesInput[]
-    base_id?: StringWithAggregatesFilter<"Base"> | string
+    id?: StringWithAggregatesFilter<"Base"> | string
     base_name?: StringWithAggregatesFilter<"Base"> | string
     user_id?: StringWithAggregatesFilter<"Base"> | string
   }
@@ -6967,7 +6967,7 @@ export namespace Prisma {
     AND?: TableWhereInput | TableWhereInput[]
     OR?: TableWhereInput[]
     NOT?: TableWhereInput | TableWhereInput[]
-    table_id?: StringFilter<"Table"> | string
+    id?: StringFilter<"Table"> | string
     base_id?: StringFilter<"Table"> | string
     table_name?: StringFilter<"Table"> | string
     base?: XOR<BaseScalarRelationFilter, BaseWhereInput>
@@ -6976,7 +6976,7 @@ export namespace Prisma {
   }
 
   export type TableOrderByWithRelationInput = {
-    table_id?: SortOrder
+    id?: SortOrder
     base_id?: SortOrder
     table_name?: SortOrder
     base?: BaseOrderByWithRelationInput
@@ -6985,7 +6985,7 @@ export namespace Prisma {
   }
 
   export type TableWhereUniqueInput = Prisma.AtLeast<{
-    table_id?: string
+    id?: string
     AND?: TableWhereInput | TableWhereInput[]
     OR?: TableWhereInput[]
     NOT?: TableWhereInput | TableWhereInput[]
@@ -6994,10 +6994,10 @@ export namespace Prisma {
     base?: XOR<BaseScalarRelationFilter, BaseWhereInput>
     fields?: FieldListRelationFilter
     rows?: RowListRelationFilter
-  }, "table_id">
+  }, "id">
 
   export type TableOrderByWithAggregationInput = {
-    table_id?: SortOrder
+    id?: SortOrder
     base_id?: SortOrder
     table_name?: SortOrder
     _count?: TableCountOrderByAggregateInput
@@ -7009,7 +7009,7 @@ export namespace Prisma {
     AND?: TableScalarWhereWithAggregatesInput | TableScalarWhereWithAggregatesInput[]
     OR?: TableScalarWhereWithAggregatesInput[]
     NOT?: TableScalarWhereWithAggregatesInput | TableScalarWhereWithAggregatesInput[]
-    table_id?: StringWithAggregatesFilter<"Table"> | string
+    id?: StringWithAggregatesFilter<"Table"> | string
     base_id?: StringWithAggregatesFilter<"Table"> | string
     table_name?: StringWithAggregatesFilter<"Table"> | string
   }
@@ -7018,7 +7018,7 @@ export namespace Prisma {
     AND?: FieldWhereInput | FieldWhereInput[]
     OR?: FieldWhereInput[]
     NOT?: FieldWhereInput | FieldWhereInput[]
-    field_id?: StringFilter<"Field"> | string
+    id?: StringFilter<"Field"> | string
     table_id?: StringFilter<"Field"> | string
     name?: StringFilter<"Field"> | string
     type?: EnumFieldTypeFilter<"Field"> | $Enums.FieldType
@@ -7029,7 +7029,7 @@ export namespace Prisma {
   }
 
   export type FieldOrderByWithRelationInput = {
-    field_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     name?: SortOrder
     type?: SortOrder
@@ -7040,7 +7040,7 @@ export namespace Prisma {
   }
 
   export type FieldWhereUniqueInput = Prisma.AtLeast<{
-    field_id?: string
+    id?: string
     AND?: FieldWhereInput | FieldWhereInput[]
     OR?: FieldWhereInput[]
     NOT?: FieldWhereInput | FieldWhereInput[]
@@ -7051,10 +7051,10 @@ export namespace Prisma {
     order_index?: IntFilter<"Field"> | number
     table?: XOR<TableScalarRelationFilter, TableWhereInput>
     cells?: CellListRelationFilter
-  }, "field_id">
+  }, "id">
 
   export type FieldOrderByWithAggregationInput = {
-    field_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     name?: SortOrder
     type?: SortOrder
@@ -7071,7 +7071,7 @@ export namespace Prisma {
     AND?: FieldScalarWhereWithAggregatesInput | FieldScalarWhereWithAggregatesInput[]
     OR?: FieldScalarWhereWithAggregatesInput[]
     NOT?: FieldScalarWhereWithAggregatesInput | FieldScalarWhereWithAggregatesInput[]
-    field_id?: StringWithAggregatesFilter<"Field"> | string
+    id?: StringWithAggregatesFilter<"Field"> | string
     table_id?: StringWithAggregatesFilter<"Field"> | string
     name?: StringWithAggregatesFilter<"Field"> | string
     type?: EnumFieldTypeWithAggregatesFilter<"Field"> | $Enums.FieldType
@@ -7083,31 +7083,31 @@ export namespace Prisma {
     AND?: RowWhereInput | RowWhereInput[]
     OR?: RowWhereInput[]
     NOT?: RowWhereInput | RowWhereInput[]
-    row_id?: StringFilter<"Row"> | string
+    id?: StringFilter<"Row"> | string
     table_id?: StringFilter<"Row"> | string
     table?: XOR<TableScalarRelationFilter, TableWhereInput>
     cells?: CellListRelationFilter
   }
 
   export type RowOrderByWithRelationInput = {
-    row_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     table?: TableOrderByWithRelationInput
     cells?: CellOrderByRelationAggregateInput
   }
 
   export type RowWhereUniqueInput = Prisma.AtLeast<{
-    row_id?: string
+    id?: string
     AND?: RowWhereInput | RowWhereInput[]
     OR?: RowWhereInput[]
     NOT?: RowWhereInput | RowWhereInput[]
     table_id?: StringFilter<"Row"> | string
     table?: XOR<TableScalarRelationFilter, TableWhereInput>
     cells?: CellListRelationFilter
-  }, "row_id">
+  }, "id">
 
   export type RowOrderByWithAggregationInput = {
-    row_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     _count?: RowCountOrderByAggregateInput
     _max?: RowMaxOrderByAggregateInput
@@ -7118,7 +7118,7 @@ export namespace Prisma {
     AND?: RowScalarWhereWithAggregatesInput | RowScalarWhereWithAggregatesInput[]
     OR?: RowScalarWhereWithAggregatesInput[]
     NOT?: RowScalarWhereWithAggregatesInput | RowScalarWhereWithAggregatesInput[]
-    row_id?: StringWithAggregatesFilter<"Row"> | string
+    id?: StringWithAggregatesFilter<"Row"> | string
     table_id?: StringWithAggregatesFilter<"Row"> | string
   }
 
@@ -7126,7 +7126,7 @@ export namespace Prisma {
     AND?: CellWhereInput | CellWhereInput[]
     OR?: CellWhereInput[]
     NOT?: CellWhereInput | CellWhereInput[]
-    cell_id?: StringFilter<"Cell"> | string
+    id?: StringFilter<"Cell"> | string
     field_id?: StringFilter<"Cell"> | string
     row_id?: StringFilter<"Cell"> | string
     value?: JsonFilter<"Cell">
@@ -7135,7 +7135,7 @@ export namespace Prisma {
   }
 
   export type CellOrderByWithRelationInput = {
-    cell_id?: SortOrder
+    id?: SortOrder
     field_id?: SortOrder
     row_id?: SortOrder
     value?: SortOrder
@@ -7144,7 +7144,7 @@ export namespace Prisma {
   }
 
   export type CellWhereUniqueInput = Prisma.AtLeast<{
-    cell_id?: string
+    id?: string
     AND?: CellWhereInput | CellWhereInput[]
     OR?: CellWhereInput[]
     NOT?: CellWhereInput | CellWhereInput[]
@@ -7153,10 +7153,10 @@ export namespace Prisma {
     value?: JsonFilter<"Cell">
     field?: XOR<FieldScalarRelationFilter, FieldWhereInput>
     row?: XOR<RowScalarRelationFilter, RowWhereInput>
-  }, "cell_id">
+  }, "id">
 
   export type CellOrderByWithAggregationInput = {
-    cell_id?: SortOrder
+    id?: SortOrder
     field_id?: SortOrder
     row_id?: SortOrder
     value?: SortOrder
@@ -7169,60 +7169,60 @@ export namespace Prisma {
     AND?: CellScalarWhereWithAggregatesInput | CellScalarWhereWithAggregatesInput[]
     OR?: CellScalarWhereWithAggregatesInput[]
     NOT?: CellScalarWhereWithAggregatesInput | CellScalarWhereWithAggregatesInput[]
-    cell_id?: StringWithAggregatesFilter<"Cell"> | string
+    id?: StringWithAggregatesFilter<"Cell"> | string
     field_id?: StringWithAggregatesFilter<"Cell"> | string
     row_id?: StringWithAggregatesFilter<"Cell"> | string
     value?: JsonWithAggregatesFilter<"Cell">
   }
 
   export type BaseCreateInput = {
-    base_id?: string
+    id?: string
     base_name?: string
     user_id: string
     tables?: TableCreateNestedManyWithoutBaseInput
   }
 
   export type BaseUncheckedCreateInput = {
-    base_id?: string
+    id?: string
     base_name?: string
     user_id: string
     tables?: TableUncheckedCreateNestedManyWithoutBaseInput
   }
 
   export type BaseUpdateInput = {
-    base_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_name?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     tables?: TableUpdateManyWithoutBaseNestedInput
   }
 
   export type BaseUncheckedUpdateInput = {
-    base_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_name?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     tables?: TableUncheckedUpdateManyWithoutBaseNestedInput
   }
 
   export type BaseCreateManyInput = {
-    base_id?: string
+    id?: string
     base_name?: string
     user_id: string
   }
 
   export type BaseUpdateManyMutationInput = {
-    base_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_name?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type BaseUncheckedUpdateManyInput = {
-    base_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_name?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type TableCreateInput = {
-    table_id?: string
+    id?: string
     table_name: string
     base: BaseCreateNestedOneWithoutTablesInput
     fields?: FieldCreateNestedManyWithoutTableInput
@@ -7230,7 +7230,7 @@ export namespace Prisma {
   }
 
   export type TableUncheckedCreateInput = {
-    table_id?: string
+    id?: string
     base_id: string
     table_name: string
     fields?: FieldUncheckedCreateNestedManyWithoutTableInput
@@ -7238,7 +7238,7 @@ export namespace Prisma {
   }
 
   export type TableUpdateInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     base?: BaseUpdateOneRequiredWithoutTablesNestedInput
     fields?: FieldUpdateManyWithoutTableNestedInput
@@ -7246,7 +7246,7 @@ export namespace Prisma {
   }
 
   export type TableUncheckedUpdateInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     fields?: FieldUncheckedUpdateManyWithoutTableNestedInput
@@ -7254,24 +7254,24 @@ export namespace Prisma {
   }
 
   export type TableCreateManyInput = {
-    table_id?: string
+    id?: string
     base_id: string
     table_name: string
   }
 
   export type TableUpdateManyMutationInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type TableUncheckedUpdateManyInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type FieldCreateInput = {
-    field_id?: string
+    id?: string
     name: string
     type: $Enums.FieldType
     options: JsonNullValueInput | InputJsonValue
@@ -7281,7 +7281,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedCreateInput = {
-    field_id?: string
+    id?: string
     table_id: string
     name: string
     type: $Enums.FieldType
@@ -7291,7 +7291,7 @@ export namespace Prisma {
   }
 
   export type FieldUpdateInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
     options?: JsonNullValueInput | InputJsonValue
@@ -7301,7 +7301,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedUpdateInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
@@ -7311,7 +7311,7 @@ export namespace Prisma {
   }
 
   export type FieldCreateManyInput = {
-    field_id?: string
+    id?: string
     table_id: string
     name: string
     type: $Enums.FieldType
@@ -7320,7 +7320,7 @@ export namespace Prisma {
   }
 
   export type FieldUpdateManyMutationInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
     options?: JsonNullValueInput | InputJsonValue
@@ -7328,7 +7328,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedUpdateManyInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
@@ -7337,85 +7337,85 @@ export namespace Prisma {
   }
 
   export type RowCreateInput = {
-    row_id?: string
+    id?: string
     table: TableCreateNestedOneWithoutRowsInput
     cells?: CellCreateNestedManyWithoutRowInput
   }
 
   export type RowUncheckedCreateInput = {
-    row_id?: string
+    id?: string
     table_id: string
     cells?: CellUncheckedCreateNestedManyWithoutRowInput
   }
 
   export type RowUpdateInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table?: TableUpdateOneRequiredWithoutRowsNestedInput
     cells?: CellUpdateManyWithoutRowNestedInput
   }
 
   export type RowUncheckedUpdateInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_id?: StringFieldUpdateOperationsInput | string
     cells?: CellUncheckedUpdateManyWithoutRowNestedInput
   }
 
   export type RowCreateManyInput = {
-    row_id?: string
+    id?: string
     table_id: string
   }
 
   export type RowUpdateManyMutationInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
   }
 
   export type RowUncheckedUpdateManyInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type CellCreateInput = {
-    cell_id?: string
+    id?: string
     value: JsonNullValueInput | InputJsonValue
     field: FieldCreateNestedOneWithoutCellsInput
     row: RowCreateNestedOneWithoutCellsInput
   }
 
   export type CellUncheckedCreateInput = {
-    cell_id?: string
+    id?: string
     field_id: string
     row_id: string
     value: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUpdateInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     field?: FieldUpdateOneRequiredWithoutCellsNestedInput
     row?: RowUpdateOneRequiredWithoutCellsNestedInput
   }
 
   export type CellUncheckedUpdateInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     field_id?: StringFieldUpdateOperationsInput | string
     row_id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
   }
 
   export type CellCreateManyInput = {
-    cell_id?: string
+    id?: string
     field_id: string
     row_id: string
     value: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUpdateManyMutationInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUncheckedUpdateManyInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     field_id?: StringFieldUpdateOperationsInput | string
     row_id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
@@ -7447,19 +7447,19 @@ export namespace Prisma {
   }
 
   export type BaseCountOrderByAggregateInput = {
-    base_id?: SortOrder
+    id?: SortOrder
     base_name?: SortOrder
     user_id?: SortOrder
   }
 
   export type BaseMaxOrderByAggregateInput = {
-    base_id?: SortOrder
+    id?: SortOrder
     base_name?: SortOrder
     user_id?: SortOrder
   }
 
   export type BaseMinOrderByAggregateInput = {
-    base_id?: SortOrder
+    id?: SortOrder
     base_name?: SortOrder
     user_id?: SortOrder
   }
@@ -7508,19 +7508,19 @@ export namespace Prisma {
   }
 
   export type TableCountOrderByAggregateInput = {
-    table_id?: SortOrder
+    id?: SortOrder
     base_id?: SortOrder
     table_name?: SortOrder
   }
 
   export type TableMaxOrderByAggregateInput = {
-    table_id?: SortOrder
+    id?: SortOrder
     base_id?: SortOrder
     table_name?: SortOrder
   }
 
   export type TableMinOrderByAggregateInput = {
-    table_id?: SortOrder
+    id?: SortOrder
     base_id?: SortOrder
     table_name?: SortOrder
   }
@@ -7582,7 +7582,7 @@ export namespace Prisma {
   }
 
   export type FieldCountOrderByAggregateInput = {
-    field_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     name?: SortOrder
     type?: SortOrder
@@ -7595,7 +7595,7 @@ export namespace Prisma {
   }
 
   export type FieldMaxOrderByAggregateInput = {
-    field_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     name?: SortOrder
     type?: SortOrder
@@ -7603,7 +7603,7 @@ export namespace Prisma {
   }
 
   export type FieldMinOrderByAggregateInput = {
-    field_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
     name?: SortOrder
     type?: SortOrder
@@ -7667,17 +7667,17 @@ export namespace Prisma {
   }
 
   export type RowCountOrderByAggregateInput = {
-    row_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
   }
 
   export type RowMaxOrderByAggregateInput = {
-    row_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
   }
 
   export type RowMinOrderByAggregateInput = {
-    row_id?: SortOrder
+    id?: SortOrder
     table_id?: SortOrder
   }
 
@@ -7692,20 +7692,20 @@ export namespace Prisma {
   }
 
   export type CellCountOrderByAggregateInput = {
-    cell_id?: SortOrder
+    id?: SortOrder
     field_id?: SortOrder
     row_id?: SortOrder
     value?: SortOrder
   }
 
   export type CellMaxOrderByAggregateInput = {
-    cell_id?: SortOrder
+    id?: SortOrder
     field_id?: SortOrder
     row_id?: SortOrder
   }
 
   export type CellMinOrderByAggregateInput = {
-    cell_id?: SortOrder
+    id?: SortOrder
     field_id?: SortOrder
     row_id?: SortOrder
   }
@@ -8116,14 +8116,14 @@ export namespace Prisma {
   }
 
   export type TableCreateWithoutBaseInput = {
-    table_id?: string
+    id?: string
     table_name: string
     fields?: FieldCreateNestedManyWithoutTableInput
     rows?: RowCreateNestedManyWithoutTableInput
   }
 
   export type TableUncheckedCreateWithoutBaseInput = {
-    table_id?: string
+    id?: string
     table_name: string
     fields?: FieldUncheckedCreateNestedManyWithoutTableInput
     rows?: RowUncheckedCreateNestedManyWithoutTableInput
@@ -8159,19 +8159,19 @@ export namespace Prisma {
     AND?: TableScalarWhereInput | TableScalarWhereInput[]
     OR?: TableScalarWhereInput[]
     NOT?: TableScalarWhereInput | TableScalarWhereInput[]
-    table_id?: StringFilter<"Table"> | string
+    id?: StringFilter<"Table"> | string
     base_id?: StringFilter<"Table"> | string
     table_name?: StringFilter<"Table"> | string
   }
 
   export type BaseCreateWithoutTablesInput = {
-    base_id?: string
+    id?: string
     base_name?: string
     user_id: string
   }
 
   export type BaseUncheckedCreateWithoutTablesInput = {
-    base_id?: string
+    id?: string
     base_name?: string
     user_id: string
   }
@@ -8182,7 +8182,7 @@ export namespace Prisma {
   }
 
   export type FieldCreateWithoutTableInput = {
-    field_id?: string
+    id?: string
     name: string
     type: $Enums.FieldType
     options: JsonNullValueInput | InputJsonValue
@@ -8191,7 +8191,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedCreateWithoutTableInput = {
-    field_id?: string
+    id?: string
     name: string
     type: $Enums.FieldType
     options: JsonNullValueInput | InputJsonValue
@@ -8210,12 +8210,12 @@ export namespace Prisma {
   }
 
   export type RowCreateWithoutTableInput = {
-    row_id?: string
+    id?: string
     cells?: CellCreateNestedManyWithoutRowInput
   }
 
   export type RowUncheckedCreateWithoutTableInput = {
-    row_id?: string
+    id?: string
     cells?: CellUncheckedCreateNestedManyWithoutRowInput
   }
 
@@ -8241,13 +8241,13 @@ export namespace Prisma {
   }
 
   export type BaseUpdateWithoutTablesInput = {
-    base_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_name?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type BaseUncheckedUpdateWithoutTablesInput = {
-    base_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_name?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
   }
@@ -8272,7 +8272,7 @@ export namespace Prisma {
     AND?: FieldScalarWhereInput | FieldScalarWhereInput[]
     OR?: FieldScalarWhereInput[]
     NOT?: FieldScalarWhereInput | FieldScalarWhereInput[]
-    field_id?: StringFilter<"Field"> | string
+    id?: StringFilter<"Field"> | string
     table_id?: StringFilter<"Field"> | string
     name?: StringFilter<"Field"> | string
     type?: EnumFieldTypeFilter<"Field"> | $Enums.FieldType
@@ -8300,19 +8300,19 @@ export namespace Prisma {
     AND?: RowScalarWhereInput | RowScalarWhereInput[]
     OR?: RowScalarWhereInput[]
     NOT?: RowScalarWhereInput | RowScalarWhereInput[]
-    row_id?: StringFilter<"Row"> | string
+    id?: StringFilter<"Row"> | string
     table_id?: StringFilter<"Row"> | string
   }
 
   export type TableCreateWithoutFieldsInput = {
-    table_id?: string
+    id?: string
     table_name: string
     base: BaseCreateNestedOneWithoutTablesInput
     rows?: RowCreateNestedManyWithoutTableInput
   }
 
   export type TableUncheckedCreateWithoutFieldsInput = {
-    table_id?: string
+    id?: string
     base_id: string
     table_name: string
     rows?: RowUncheckedCreateNestedManyWithoutTableInput
@@ -8324,13 +8324,13 @@ export namespace Prisma {
   }
 
   export type CellCreateWithoutFieldInput = {
-    cell_id?: string
+    id?: string
     value: JsonNullValueInput | InputJsonValue
     row: RowCreateNestedOneWithoutCellsInput
   }
 
   export type CellUncheckedCreateWithoutFieldInput = {
-    cell_id?: string
+    id?: string
     row_id: string
     value: JsonNullValueInput | InputJsonValue
   }
@@ -8357,14 +8357,14 @@ export namespace Prisma {
   }
 
   export type TableUpdateWithoutFieldsInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     base?: BaseUpdateOneRequiredWithoutTablesNestedInput
     rows?: RowUpdateManyWithoutTableNestedInput
   }
 
   export type TableUncheckedUpdateWithoutFieldsInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     rows?: RowUncheckedUpdateManyWithoutTableNestedInput
@@ -8390,21 +8390,21 @@ export namespace Prisma {
     AND?: CellScalarWhereInput | CellScalarWhereInput[]
     OR?: CellScalarWhereInput[]
     NOT?: CellScalarWhereInput | CellScalarWhereInput[]
-    cell_id?: StringFilter<"Cell"> | string
+    id?: StringFilter<"Cell"> | string
     field_id?: StringFilter<"Cell"> | string
     row_id?: StringFilter<"Cell"> | string
     value?: JsonFilter<"Cell">
   }
 
   export type TableCreateWithoutRowsInput = {
-    table_id?: string
+    id?: string
     table_name: string
     base: BaseCreateNestedOneWithoutTablesInput
     fields?: FieldCreateNestedManyWithoutTableInput
   }
 
   export type TableUncheckedCreateWithoutRowsInput = {
-    table_id?: string
+    id?: string
     base_id: string
     table_name: string
     fields?: FieldUncheckedCreateNestedManyWithoutTableInput
@@ -8416,13 +8416,13 @@ export namespace Prisma {
   }
 
   export type CellCreateWithoutRowInput = {
-    cell_id?: string
+    id?: string
     value: JsonNullValueInput | InputJsonValue
     field: FieldCreateNestedOneWithoutCellsInput
   }
 
   export type CellUncheckedCreateWithoutRowInput = {
-    cell_id?: string
+    id?: string
     field_id: string
     value: JsonNullValueInput | InputJsonValue
   }
@@ -8449,14 +8449,14 @@ export namespace Prisma {
   }
 
   export type TableUpdateWithoutRowsInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     base?: BaseUpdateOneRequiredWithoutTablesNestedInput
     fields?: FieldUpdateManyWithoutTableNestedInput
   }
 
   export type TableUncheckedUpdateWithoutRowsInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     base_id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     fields?: FieldUncheckedUpdateManyWithoutTableNestedInput
@@ -8479,7 +8479,7 @@ export namespace Prisma {
   }
 
   export type FieldCreateWithoutCellsInput = {
-    field_id?: string
+    id?: string
     name: string
     type: $Enums.FieldType
     options: JsonNullValueInput | InputJsonValue
@@ -8488,7 +8488,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedCreateWithoutCellsInput = {
-    field_id?: string
+    id?: string
     table_id: string
     name: string
     type: $Enums.FieldType
@@ -8502,12 +8502,12 @@ export namespace Prisma {
   }
 
   export type RowCreateWithoutCellsInput = {
-    row_id?: string
+    id?: string
     table: TableCreateNestedOneWithoutRowsInput
   }
 
   export type RowUncheckedCreateWithoutCellsInput = {
-    row_id?: string
+    id?: string
     table_id: string
   }
 
@@ -8528,7 +8528,7 @@ export namespace Prisma {
   }
 
   export type FieldUpdateWithoutCellsInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
     options?: JsonNullValueInput | InputJsonValue
@@ -8537,7 +8537,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedUpdateWithoutCellsInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
@@ -8557,41 +8557,41 @@ export namespace Prisma {
   }
 
   export type RowUpdateWithoutCellsInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table?: TableUpdateOneRequiredWithoutRowsNestedInput
   }
 
   export type RowUncheckedUpdateWithoutCellsInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type TableCreateManyBaseInput = {
-    table_id?: string
+    id?: string
     table_name: string
   }
 
   export type TableUpdateWithoutBaseInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     fields?: FieldUpdateManyWithoutTableNestedInput
     rows?: RowUpdateManyWithoutTableNestedInput
   }
 
   export type TableUncheckedUpdateWithoutBaseInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
     fields?: FieldUncheckedUpdateManyWithoutTableNestedInput
     rows?: RowUncheckedUpdateManyWithoutTableNestedInput
   }
 
   export type TableUncheckedUpdateManyWithoutBaseInput = {
-    table_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     table_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type FieldCreateManyTableInput = {
-    field_id?: string
+    id?: string
     name: string
     type: $Enums.FieldType
     options: JsonNullValueInput | InputJsonValue
@@ -8599,11 +8599,11 @@ export namespace Prisma {
   }
 
   export type RowCreateManyTableInput = {
-    row_id?: string
+    id?: string
   }
 
   export type FieldUpdateWithoutTableInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
     options?: JsonNullValueInput | InputJsonValue
@@ -8612,7 +8612,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedUpdateWithoutTableInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
     options?: JsonNullValueInput | InputJsonValue
@@ -8621,7 +8621,7 @@ export namespace Prisma {
   }
 
   export type FieldUncheckedUpdateManyWithoutTableInput = {
-    field_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: EnumFieldTypeFieldUpdateOperationsInput | $Enums.FieldType
     options?: JsonNullValueInput | InputJsonValue
@@ -8629,63 +8629,63 @@ export namespace Prisma {
   }
 
   export type RowUpdateWithoutTableInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     cells?: CellUpdateManyWithoutRowNestedInput
   }
 
   export type RowUncheckedUpdateWithoutTableInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     cells?: CellUncheckedUpdateManyWithoutRowNestedInput
   }
 
   export type RowUncheckedUpdateManyWithoutTableInput = {
-    row_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
   }
 
   export type CellCreateManyFieldInput = {
-    cell_id?: string
+    id?: string
     row_id: string
     value: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUpdateWithoutFieldInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     row?: RowUpdateOneRequiredWithoutCellsNestedInput
   }
 
   export type CellUncheckedUpdateWithoutFieldInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     row_id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUncheckedUpdateManyWithoutFieldInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     row_id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
   }
 
   export type CellCreateManyRowInput = {
-    cell_id?: string
+    id?: string
     field_id: string
     value: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUpdateWithoutRowInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     field?: FieldUpdateOneRequiredWithoutCellsNestedInput
   }
 
   export type CellUncheckedUpdateWithoutRowInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     field_id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
   }
 
   export type CellUncheckedUpdateManyWithoutRowInput = {
-    cell_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     field_id?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
   }

@@ -122,19 +122,19 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.BaseScalarFieldEnum = {
-  base_id: 'base_id',
+  id: 'id',
   base_name: 'base_name',
   user_id: 'user_id'
 };
 
 exports.Prisma.TableScalarFieldEnum = {
-  table_id: 'table_id',
+  id: 'id',
   base_id: 'base_id',
   table_name: 'table_name'
 };
 
 exports.Prisma.FieldScalarFieldEnum = {
-  field_id: 'field_id',
+  id: 'id',
   table_id: 'table_id',
   name: 'name',
   type: 'type',
@@ -143,12 +143,12 @@ exports.Prisma.FieldScalarFieldEnum = {
 };
 
 exports.Prisma.RowScalarFieldEnum = {
-  row_id: 'row_id',
+  id: 'id',
   table_id: 'table_id'
 };
 
 exports.Prisma.CellScalarFieldEnum = {
-  cell_id: 'cell_id',
+  id: 'id',
   field_id: 'field_id',
   row_id: 'row_id',
   value: 'value'

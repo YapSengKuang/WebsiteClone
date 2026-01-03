@@ -4,12 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "prisma generate && next build",
     "check": "next lint && tsc --noEmit",
     "db:generate": "prisma migrate dev",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
+    "db:seed": "NODE_ENV=development prisma db seed",
     "dev": "next dev --turbo",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
@@ -19,6 +20,9 @@
     "preview": "next build && next start",
     "start": "next start",
     "typecheck": "tsc --noEmit"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.2",
@@ -47,11 +51,13 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.3",
+    "i": "^0.3.7",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "prisma": "^6.19.1",
     "tailwindcss": "^4.0.15",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
   },
